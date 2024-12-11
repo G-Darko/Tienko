@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Admins" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cc9d1a0e-d102-4c30-8082-b22305756a13">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="img" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     admins.`id_Admin` AS admins_id_Admin,
+     admins.`usuario` AS admins_usuario,
+     admins.`correo` AS admins_correo,
+     admins.`pass` AS admins_pass,
+     admins.`id_su` AS admins_id_su,
+     sucursal.`id_su` AS sucursal_id_su,
+     sucursal.`nombre` AS sucursal_nombre,
+     sucursal.`direccion` AS sucursal_direccion,
+     sucursal.`telefo` AS sucursal_telefo
+FROM
+     `sucursal` sucursal INNER JOIN `admins` admins ON sucursal.`id_su` = admins.`id_su`]]>
+	</queryString>
+	<field name="admins_id_Admin" class="java.lang.Integer"/>
+	<field name="admins_usuario" class="java.lang.String"/>
+	<field name="admins_correo" class="java.lang.String"/>
+	<field name="sucursal_nombre" class="java.lang.String"/>
+	<field name="sucursal_direccion" class="java.lang.String"/>
+	<field name="sucursal_telefo" class="java.lang.String"/>
+	<field name="admins_id_su" class="java.lang.Integer"/>
+	<group name="admins_id_su">
+		<groupExpression><![CDATA[$F{admins_id_su}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="54" width="346" height="25" uuid="21d0a516-7600-4eea-92ad-448cc1614fb5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[Catalogo Administradores]]></text>
+			</staticText>
+			<image>
+				<reportElement x="664" y="0" width="88" height="79" uuid="a402f82f-f8bc-4d7a-8df1-0c739e72f465"/>
+				<imageExpression><![CDATA[$P{img}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="0" width="346" height="38" uuid="3f4cd75b-f592-4866-bede-ce17f8bc08e1"/>
+				<textElement>
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[TIENKO S.A de C.V]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="512" y="0" width="240" height="20" uuid="118e72b3-cc02-4b51-ac9e-91bdef5e0335"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="195" height="28" uuid="7b999d57-9331-4885-9df7-3d1853f1c581"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sucursal_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="0" width="353" height="20" uuid="692a2cf8-e18d-4cb3-9af5-4ed16f8231ba"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sucursal_direccion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="28" width="100" height="20" uuid="160a5219-7630-4880-943f-a323257fd18b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Admin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="28" width="157" height="20" uuid="6666d0e8-989e-46d1-9a91-ef1d891727a6"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Usuario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="257" y="28" width="188" height="20" uuid="bbe20f88-e9e7-4648-adcc-1ead1f8b364b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="484" y="28" width="268" height="20" uuid="5684f4d9-858f-47c3-b590-1c461d7f06eb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sucursal_telefo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="50" width="751" height="4" uuid="3b51d95f-b44c-469e-bdb8-90c0154beda8"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f8263c2a-dd44-4801-8af2-9a8615a128e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{admins_id_Admin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="157" height="20" uuid="13ebf8da-d0a3-4425-b97f-8f5b894b99a3"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{admins_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="0" width="188" height="20" uuid="8f383158-6789-4f1f-bdb4-2755f6f63a12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{admins_correo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="10" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="57" y="0" width="66" height="20" uuid="f997a937-c8ff-43d1-8803-380e986b4846"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="57" height="20" uuid="23411b63-373e-4e62-a310-85243bf7fe30"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Pág. "+$V{PAGE_NUMBER}+" / "]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="25" splitType="Stretch"/>
+	</summary>
+</jasperReport>
